@@ -1,7 +1,8 @@
 import { ComputerService, DeviceService, MedicalDeviceService } from "@/core/service";
-import { Controller } from "./controller";
-import Elysia from "elysia";
+import { Controller } from "./controller.elysia";
+
 import openapi from "@elysiajs/openapi";
+import Elysia from "elysia";
 
 export class ElysiaApiAdapter {
     private controller: Controller
