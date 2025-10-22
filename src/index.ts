@@ -1,5 +1,5 @@
 import { ElysiaApiAdapter } from "./adapter/api/elysia";
-import { FileSystemPhotoRepository } from "./adapter/photo/filesystem/filesystem.photo-repository";
+import { FileSystemPhotoRepository } from "./adapter/photo/filesystem";
 import { InMemoryDeviceRepository } from "./adapter/repository/inmemory";
 import { ComputerService, DeviceService, MedicalDeviceService } from "./core/service";
 
