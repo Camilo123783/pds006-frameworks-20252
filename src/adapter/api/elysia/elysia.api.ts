@@ -6,6 +6,7 @@ import Elysia from "elysia";
 
 export class ElysiaApiAdapter {
     private controller: Controller
+    public app: Elysia
 
     constructor(
         computerService: ComputerService,
@@ -17,13 +18,14 @@ export class ElysiaApiAdapter {
             deviceService,
             medicalDeviceService
         )
+
+        this.app = new Elysia()
+            .use(openapi({}))
+            .use(this.controller.routes())
     }
 
     async run() {
-        const app = new Elysia()
-            .use(openapi({}))
-            .use(this.controller.routes())
-            .listen(3000)
+        this.app.listen(3000)
         
         console.log("El servidor esta corriendo en el puerto 3000")
     }
