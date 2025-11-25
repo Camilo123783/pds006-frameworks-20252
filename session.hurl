@@ -13,16 +13,6 @@
 # ============================================================================
 
 ### ============================================================================
-### VARIABLES
-### ============================================================================
-
-# Host puede pasarse como variable: --variable host=http://localhost:8000
-# UUIDs para uso en pruebas posteriores (se obtendrán de las respuestas reales)
-@computerId = 550e8400-e29b-41d4-a716-446655440000
-@medicalDeviceId = 550e8400-e29b-41d4-a716-446655440001
-@frequentComputerId = 550e8400-e29b-41d4-a716-446655440002
-
-### ============================================================================
 ### TEST 1: CHECK-IN COMPUTER
 ### ============================================================================
 ### POST /api/computers/checkin
@@ -176,7 +166,7 @@ jsonpath("$") isArray
 ### PATCH /api/computers/frequent/checkin/:id
 ### Use the frequent computer check-in endpoint (marks computer as entered)
 ### Expected: 200 OK with FrequentComputer object
-PATCH {{host}}/api/computers/frequent/checkin/{{frequentComputerId}}
+PATCH {{host}}/api/computers/frequent/checkin/550e8400-e29b-41d4-a716-446655440002
 Accept: application/json
 
 HTTP 200
@@ -188,7 +178,7 @@ HTTP 200
 ### PATCH /api/devices/checkout/:id
 ### Check out a device (mark as exited)
 ### Expected: 200 OK
-PATCH {{host}}/api/devices/checkout/{{computerId}}
+PATCH {{host}}/api/devices/checkout/550e8400-e29b-41d4-a716-446655440000
 Accept: application/json
 
 HTTP 200
