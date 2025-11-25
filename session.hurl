@@ -55,7 +55,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -64,7 +64,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -73,7 +73,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -82,7 +82,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -91,7 +91,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -100,7 +100,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -123,7 +123,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
 ###
 
@@ -132,5 +132,5 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath "$" isArray
+jsonpath "$" type == "array"
 
