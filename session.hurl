@@ -17,8 +17,6 @@
 ### ============================================================================
 
 # Host puede pasarse como variable: --variable host=http://localhost:8000
-@api = {{host}}/api
-
 # UUIDs para uso en pruebas posteriores (se obtendrán de las respuestas reales)
 @computerId = 550e8400-e29b-41d4-a716-446655440000
 @medicalDeviceId = 550e8400-e29b-41d4-a716-446655440001
@@ -30,7 +28,7 @@
 ### POST /api/computers/checkin
 ### Register a new computer in the system
 ### Expected: 200 OK with Computer object
-POST {{api}}/computers/checkin
+POST {{host}}/api/computers/checkin
 Content-Type: multipart/form-data
 
 ; Computer 1 - Dell XPS13
@@ -51,7 +49,7 @@ computerId: jsonpath("$.id")
 ### POST /api/medicaldevices/checkin
 ### Register a new medical device in the system
 ### Expected: 200 OK with MedicalDevice object
-POST {{api}}/medicaldevices/checkin
+POST {{host}}/api/medicaldevices/checkin
 Content-Type: application/json
 
 {
@@ -73,7 +71,7 @@ medicalDeviceId: jsonpath("$.id")
 ### POST /api/computers/frequent
 ### Register a computer that will be used frequently (with auto check-in/out URLs)
 ### Expected: 200 OK with FrequentComputer object
-POST {{api}}/computers/frequent
+POST {{host}}/api/computers/frequent
 Content-Type: multipart/form-data
 
 ; Computer 2 - Lenovo ThinkPad (Frequent)
@@ -94,7 +92,7 @@ frequentComputerId: jsonpath("$.device.id")
 ### GET /api/computers
 ### Retrieve all registered computers
 ### Expected: 200 OK with array of Computer objects
-GET {{api}}/computers
+GET {{host}}/api/computers
 Accept: application/json
 
 HTTP 200
@@ -108,7 +106,7 @@ jsonpath("$") isArray
 ### GET /api/medicaldevices
 ### Retrieve all registered medical devices
 ### Expected: 200 OK with array of MedicalDevice objects
-GET {{api}}/medicaldevices
+GET {{host}}/api/medicaldevices
 Accept: application/json
 
 HTTP 200
@@ -122,7 +120,7 @@ jsonpath("$") isArray
 ### GET /api/computers/frequent
 ### Retrieve all computers registered as frequent
 ### Expected: 200 OK with array of FrequentComputer objects
-GET {{api}}/computers/frequent
+GET {{host}}/api/computers/frequent
 Accept: application/json
 
 HTTP 200
@@ -136,7 +134,7 @@ jsonpath("$") isArray
 ### GET /api/devices/entered
 ### Retrieve all devices that are currently checked in (entered)
 ### Expected: 200 OK with array of EnteredDevice objects
-GET {{api}}/devices/entered
+GET {{host}}/api/devices/entered
 Accept: application/json
 
 HTTP 200
@@ -150,7 +148,7 @@ jsonpath("$") isArray
 ### GET /api/computers?sortBy=brand&sortValue=asc&limit=10&offset=0
 ### Get computers with sorting and pagination options
 ### Expected: 200 OK with sorted array of Computer objects
-GET {{api}}/computers?sortBy=brand&sortValue=asc&limit=10&offset=0
+GET {{host}}/api/computers?sortBy=brand&sortValue=asc&limit=10&offset=0
 Accept: application/json
 
 HTTP 200
@@ -164,7 +162,7 @@ jsonpath("$") isArray
 ### GET /api/medicaldevices?sortBy=model&sortValue=asc&limit=10&offset=0
 ### Get medical devices with sorting and pagination options
 ### Expected: 200 OK with sorted array of MedicalDevice objects
-GET {{api}}/medicaldevices?sortBy=model&sortValue=asc&limit=10&offset=0
+GET {{host}}/api/medicaldevices?sortBy=model&sortValue=asc&limit=10&offset=0
 Accept: application/json
 
 HTTP 200
@@ -178,7 +176,7 @@ jsonpath("$") isArray
 ### PATCH /api/computers/frequent/checkin/:id
 ### Use the frequent computer check-in endpoint (marks computer as entered)
 ### Expected: 200 OK with FrequentComputer object
-PATCH {{api}}/computers/frequent/checkin/{{frequentComputerId}}
+PATCH {{host}}/api/computers/frequent/checkin/{{frequentComputerId}}
 Accept: application/json
 
 HTTP 200
@@ -190,7 +188,7 @@ HTTP 200
 ### PATCH /api/devices/checkout/:id
 ### Check out a device (mark as exited)
 ### Expected: 200 OK
-PATCH {{api}}/devices/checkout/{{computerId}}
+PATCH {{host}}/api/devices/checkout/{{computerId}}
 Accept: application/json
 
 HTTP 200
@@ -202,7 +200,7 @@ HTTP 200
 ### GET /api/devices/entered
 ### Verify the list of entered devices has been updated after checkout
 ### Expected: 200 OK with updated array of EnteredDevice objects
-GET {{api}}/devices/entered
+GET {{host}}/api/devices/entered
 Accept: application/json
 
 HTTP 200
@@ -216,7 +214,7 @@ jsonpath("$") isArray
 ### GET /api/computers
 ### Verify computers list after checkout operation
 ### Expected: 200 OK with updated array of Computer objects
-GET {{api}}/computers
+GET {{host}}/api/computers
 Accept: application/json
 
 HTTP 200
