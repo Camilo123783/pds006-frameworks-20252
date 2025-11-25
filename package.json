@@ -2,8 +2,14 @@
   "name": "pds006sanrafael",
   "version": "1.0.50",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "test": "hurl --test ./session.hurl",
+    "test:verbose": "hurl --verbose --test ./session.hurl",
+    "docker:build": "docker build -t pds006-app:latest -f .devcontainer/Dockerfile .",
+    "docker:run": "docker run -d -p 8000:3000 --name pds006-container pds006-app:latest",
+    "docker:stop": "docker stop pds006-container",
+    "docker:remove": "docker rm pds006-container",
+    "docker:logs": "docker logs -f pds006-container"
   },
   "dependencies": {
     "@elysiajs/openapi": "^1.4.10",
