@@ -48,7 +48,9 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --location --proto "=https" --tlsv1.2 -sSf https://raw.githubusercontent.com/Orange-OpenSource/hurl/master/scripts/install.sh | bash
+          sudo apt-get update
+          sudo apt-get install -y hurl
+          hurl --version
 
       - name: Wait for API to be ready
         run: |
@@ -141,7 +143,9 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --location --proto "=https" --tlsv1.2 -sSf https://raw.githubusercontent.com/Orange-OpenSource/hurl/master/scripts/install.sh | bash
+          sudo apt-get update
+          sudo apt-get install -y hurl
+          hurl --version
 
       - name: Health Check
         run: |
@@ -165,8 +169,7 @@ jobs:
         continue-on-error: true
 
       - name: Run Smoke Tests
-        run: |
-          hurl session.hurl --variable host=https://${{ secrets.AZURE_WEBAPP_NAME_CAMILO }}.azurewebsites.net
+        run: hurl session.hurl --variable host=https://${{ secrets.AZURE_WEBAPP_NAME_CAMILO }}.azurewebsites.net
         continue-on-error: true
 
       - name: Post Deployment Report
