@@ -1,12 +1,12 @@
 POST {{host}}/api/computers/checkin
 Content-Type: multipart/form-data
 
--b brand=Dell
--b model=XPS13
--b color=Silver
--b ownerName=Juan Pérez
--b ownerId=JP001
--b photo=@./test-assets/computer.jpg
+brand=Dell
+model=XPS13
+color=Silver
+ownerName=Juan Pérez
+ownerId=JP001
+photo=@./test-assets/computer.jpg
 
 HTTP 200
 [Captures]
@@ -35,12 +35,12 @@ medicalDeviceId: jsonpath("$.id")
 POST {{host}}/api/computers/frequent
 Content-Type: multipart/form-data
 
--b brand=Lenovo
--b model=ThinkPad
--b color=Black
--b ownerName=María García
--b ownerId=MG002
--b photo=@./test-assets/computer.jpg
+brand=Lenovo
+model=ThinkPad
+color=Black
+ownerName=María García
+ownerId=MG002
+photo=@./test-assets/computer.jpg
 
 HTTP 200
 [Captures]
