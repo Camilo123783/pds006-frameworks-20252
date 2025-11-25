@@ -13,3 +13,15 @@ RUN apt-get update \
   && echo 'export PS1="\e[01;32m\u\e[m:\e[01;34m\w\e[m\$ "' >> /home/bun/.bashrc
 
 USER bun
+
+WORKDIR /app
+
+COPY --chown=bun:bun package.json bun.lock* ./
+RUN bun install --frozen-lockfile
+
+COPY --chown=bun:bun . .
+
+EXPOSE 3000
+
+CMD ["bun", "run", "dev"]
+
