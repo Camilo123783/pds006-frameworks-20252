@@ -3,8 +3,9 @@
   "version": "1.0.50",
   "scripts": {
     "dev": "bun run --watch src/index.ts",
-    "test": "hurl --test ./session.hurl",
-    "test:verbose": "hurl --verbose --test ./session.hurl",
+    "test": "hurl session.hurl --variable host=http://localhost:8000",
+    "test:verbose": "hurl session.hurl --variable host=http://localhost:8000 --verbose",
+    "test:host": "hurl session.hurl --variable host=",
     "docker:build": "docker build -t pds006-app:latest -f .devcontainer/Dockerfile .",
     "docker:run": "docker run -d -p 8000:3000 --name pds006-container pds006-app:latest",
     "docker:stop": "docker stop pds006-container",

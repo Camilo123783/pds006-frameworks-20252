@@ -16,9 +16,8 @@
 ### VARIABLES
 ### ============================================================================
 
-@host = http://localhost:8000
+# Host puede pasarse como variable: --variable host=http://localhost:8000
 @api = {{host}}/api
-@timeout = 5000
 
 # UUIDs para uso en pruebas posteriores (se obtendrán de las respuestas reales)
 @computerId = 550e8400-e29b-41d4-a716-446655440000
