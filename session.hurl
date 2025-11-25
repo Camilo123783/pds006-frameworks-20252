@@ -11,7 +11,7 @@ photo: @./test-assets/computer.jpg
 
 HTTP 200
 [Captures]
-computerId: jsonpath("$.id")
+computerId: jsonpath('$.id')
 
 ###
 
@@ -29,7 +29,7 @@ Content-Type: application/json
 
 HTTP 200
 [Captures]
-medicalDeviceId: jsonpath("$.id")
+medicalDeviceId: jsonpath('$.id')
 
 ###
 
@@ -46,7 +46,7 @@ photo: @./test-assets/computer.jpg
 
 HTTP 200
 [Captures]
-frequentComputerId: jsonpath("$.device.id")
+frequentComputerId: jsonpath('$.device.id')
 
 ###
 
@@ -55,7 +55,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -64,7 +64,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -73,7 +73,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -82,7 +82,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -91,7 +91,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -100,7 +100,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -123,7 +123,7 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
 ###
 
@@ -132,5 +132,5 @@ Accept: application/json
 
 HTTP 200
 [Asserts]
-jsonpath("$") isArray
+jsonpath('$') isArray
 
