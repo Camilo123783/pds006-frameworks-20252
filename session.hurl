@@ -3,20 +3,21 @@
 # ============================================================================
 # This file contains all the endpoints to test the device management workflow
 # 
-# Base URL: http://localhost:8000
+# Base URL: http://localhost:8000 (or pass --variable host=YOUR_URL)
 # Prerequisites:
 #   - Docker container running: pds006-container
 #   - hurl installed: https://hurl.dev
 #
 # Run tests with: hurl --test session.hurl
+# Run with custom host: hurl session.hurl --variable host=http://localhost:8000
 # ============================================================================
 
 ### ============================================================================
 ### VARIABLES
 ### ============================================================================
 
-@baseUrl = http://localhost:8000
-@api = {{baseUrl}}/api
+@host = http://localhost:8000
+@api = {{host}}/api
 @timeout = 5000
 
 # UUIDs para uso en pruebas posteriores (se obtendrán de las respuestas reales)
