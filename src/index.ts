@@ -2,6 +2,7 @@ import { ElysiaApiAdapter } from "./adapter/api/elysia";
 import { FileSystemPhotoRepository } from "./adapter/photo/filesystem";
 import { InMemoryDeviceRepository } from "./adapter/repository/inmemory";
 import { ComputerService, DeviceService, MedicalDeviceService } from "./core/service";
+import { axiomLogger } from './utils/axiom-logger.util';
 
 const deviceRepository = new InMemoryDeviceRepository()
 const photoRepository = new FileSystemPhotoRepository()
@@ -19,10 +20,15 @@ const medicalDeviceService = new MedicalDeviceService(
     photoRepository
 )
 
-const app = new ElysiaApiAdapter(
+const apiAdapter = new ElysiaApiAdapter(
     computerService,
     deviceService,
     medicalDeviceService
 )
 
-app.run()
+apiAdapter.app.get('/api/devices', async () => {
+    await axiomLogger.info('GET /api/devices called');
+    return { devices: [] };
+})
+
+apiAdapter.run()
