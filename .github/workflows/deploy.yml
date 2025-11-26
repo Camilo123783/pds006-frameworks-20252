@@ -48,10 +48,10 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/7.1.0/hurl-7.1.0-x86_64-unknown-linux-gnu.tar.gz -o hurl.tar.gz
-          tar xzf hurl.tar.gz
-          sudo mv hurl-7.1.0-x86_64-unknown-linux-gnu/hurl /usr/local/bin/
-          hurl --version
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+          cargo install hurl
+          $HOME/.cargo/bin/hurl --version
 
       - name: Wait for API to be ready
         run: |
@@ -65,7 +65,9 @@ jobs:
           done
 
       - name: Run API Tests
-        run: hurl session.hurl --variable host=http://localhost:3000
+        run: |
+          source $HOME/.cargo/env
+          $HOME/.cargo/bin/hurl session.hurl --variable host=http://localhost:3000
         continue-on-error: true
 
       - name: Stop Application
@@ -144,13 +146,14 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/7.1.0/hurl-7.1.0-x86_64-unknown-linux-gnu.tar.gz -o hurl.tar.gz
-          tar xzf hurl.tar.gz
-          sudo mv hurl-7.1.0-x86_64-unknown-linux-gnu/hurl /usr/local/bin/
-          hurl --version
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+          cargo install hurl
+          $HOME/.cargo/bin/hurl --version
 
       - name: Health Check
         run: |
+          source $HOME/.cargo/env
           echo "Waiting for deployed app to respond..."
           for i in {1..20}; do
             response=$(curl -s -o /dev/null -w "%{http_code}" "https://${{ secrets.AZURE_WEBAPP_NAME_CAMILO }}.azurewebsites.net/api/computers")
@@ -171,7 +174,9 @@ jobs:
         continue-on-error: true
 
       - name: Run Smoke Tests
-        run: hurl session.hurl --variable host=https://${{ secrets.AZURE_WEBAPP_NAME_CAMILO }}.azurewebsites.net
+        run: |
+          source $HOME/.cargo/env
+          $HOME/.cargo/bin/hurl session.hurl --variable host=https://${{ secrets.AZURE_WEBAPP_NAME_CAMILO }}.azurewebsites.net
         continue-on-error: true
 
       - name: Post Deployment Report
