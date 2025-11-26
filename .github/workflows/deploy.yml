@@ -48,8 +48,9 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/4.11.0/hurl-4.11.0-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
-          sudo mv hurl /usr/local/bin/
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/7.1.0/hurl-7.1.0-x86_64-unknown-linux-gnu.tar.gz -o hurl.tar.gz
+          tar xzf hurl.tar.gz
+          sudo mv hurl-7.1.0-x86_64-unknown-linux-gnu/hurl /usr/local/bin/
           hurl --version
 
       - name: Wait for API to be ready
@@ -143,8 +144,9 @@ jobs:
 
       - name: Install hurl
         run: |
-          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/4.11.0/hurl-4.11.0-x86_64-unknown-linux-gnu.tar.gz | tar xzf -
-          sudo mv hurl /usr/local/bin/
+          curl --proto '=https' --tlsv1.2 -LsSf https://github.com/Orange-OpenSource/hurl/releases/download/7.1.0/hurl-7.1.0-x86_64-unknown-linux-gnu.tar.gz -o hurl.tar.gz
+          tar xzf hurl.tar.gz
+          sudo mv hurl-7.1.0-x86_64-unknown-linux-gnu/hurl /usr/local/bin/
           hurl --version
 
       - name: Health Check
