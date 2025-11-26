@@ -5,19 +5,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-    inputs:
-      IMAGE_REPOSITORY:
-        description: 'Repository of the image'
-        required: true
-        default: 'pds006-device-management'
-      IMAGE_TAG:
-        description: 'Tag of the image'
-        required: true
-        default: 'latest'
-      AZURE_WEBAPP_NAME:
-        description: 'Azure App Service name'
-        required: false
-        default: 'devopswise0'
 
 env:
   IMAGE_REPOSITORY: pds006-device-management
@@ -78,7 +65,7 @@ jobs:
     if: success()
     steps:
       - uses: actions/checkout@v4
-      - uses: azure/webapps-deploy@v2
+      - uses: azure/webapps-deploy@v3
         with:
           app-name: devopswise0
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_CAMILO }}
