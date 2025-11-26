@@ -38,10 +38,6 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
-      - name: Build Project
-        run: bun run build
-        continue-on-error: true
-
       - name: Start Application
         run: bun run dev &
         continue-on-error: true
@@ -137,7 +133,6 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           images: ${{ env.DOCKER_REGISTRY }}/${{ env.IMAGE_REPOSITORY }}:${{ env.IMAGE_TAG }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_CAMILO }}
-          startup-command: ''
 
       - name: Wait for Deployment
         run: sleep 60
